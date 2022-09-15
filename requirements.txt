@@ -27,6 +27,7 @@ dill==0.3.5.1
 distlib==0.3.6
 Django==3.2.14
 django-allauth==0.51.0
+django-anymail==8.6
 django-bootstrap-icons==0.8.1
 django-ckeditor==6.5.1
 django-coverage-plugin==2.0.3
