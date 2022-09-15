@@ -10,6 +10,7 @@ attrs==22.1.0
 Babel==2.10.3
 backcall==0.2.0
 black==22.6.0
+botocore==1.27.73
 certifi==2022.9.14
 cffi==1.15.1
 cfgv==3.3.1
@@ -59,6 +60,7 @@ ipython==8.5.0
 isort==5.10.1
 jedi==0.18.1
 Jinja2==3.1.2
+jmespath==1.0.1
 lazy-object-proxy==1.7.1
 livereload==2.6.3
 MarkupSafe==2.1.1
