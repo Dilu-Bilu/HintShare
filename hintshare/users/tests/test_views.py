@@ -11,11 +11,7 @@ from django.urls import reverse
 from hintshare.users.forms import UserAdminChangeForm
 from hintshare.users.models import User
 from hintshare.users.tests.factories import UserFactory
-from hintshare.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from hintshare.users.views import UserRedirectView, UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 

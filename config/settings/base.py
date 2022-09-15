@@ -77,12 +77,12 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    'django_bootstrap_icons',
+    "django_bootstrap_icons",
 ]
 
 LOCAL_APPS = [
     "hintshare.users",
-    'stackbase',
+    "stackbase",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -280,8 +280,7 @@ SOCIALACCOUNT_FORMS = {"signup": "hintshare.users.forms.UserSocialSignupForm"}
 # Your stuff...
 # ------------------------------------------------------------------------------
 CKEDITOR_CONFIGS = {
-    'default': {
-        
-        'width': 'full', 
+    "default": {
+        "width": "full",
     },
 }

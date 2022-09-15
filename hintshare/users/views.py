@@ -16,11 +16,10 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     # email = object.email
     # email_str = f"https://mail.google.com/mail/?view=cm&fs=1&to=someone@example.com&su=SUBJECT&body=BODY&bcc={email}"
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['now'] = "nothing"
-        
+        context["now"] = "nothing"
+
         return context
 
 
@@ -30,7 +29,7 @@ user_detail_view = UserDetailView.as_view()
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     model = User
-    fields = ["name", 'bio', 'Image', 'HL', 'SL', 'Role']
+    fields = ["name", "bio", "Image", "HL", "SL", "Role"]
     success_message = _("Information successfully updated")
 
     def get_success_url(self):

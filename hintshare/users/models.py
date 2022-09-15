@@ -7,11 +7,9 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from PIL import Image
 
-choices = [
-    ("s12", "student grade 12"),
-    ("s11", "student grade 11"),
-    ("t", 'teacher')
-]
+choices = [("s12", "student grade 12"), ("s11", "student grade 11"), ("t", "teacher")]
+
+
 class User(AbstractUser):
     """
     Default custom user model for hintshare.
@@ -23,13 +21,18 @@ class User(AbstractUser):
     name = CharField(_("Name of User"), blank=True, max_length=255)
     first_name = None  # type: ignore
     last_name = None  # type: ignore
-    bio = TextField(_("Be sure to include You HLs and SLs"), blank=True, max_length=255,)
+    bio = TextField(
+        _("Be sure to include You HLs and SLs"),
+        blank=True,
+        max_length=255,
+    )
     HL = CharField(_("Your HLs"), blank=True, max_length=255)
     SL = CharField(_("Your SLs"), blank=True, max_length=255)
-    Role = CharField(_("Role: Teacher, Student11, or Student12?"), blank=True, max_length=255)
-    
-    Image = ImageField(default='default.jpg', upload_to="profile_pic")
-    
+    Role = CharField(
+        _("Role: Teacher, Student11, or Student12?"), blank=True, max_length=255
+    )
+
+    Image = ImageField(default="default.jpg", upload_to="profile_pic")
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -38,9 +41,6 @@ class User(AbstractUser):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.Image.path)
-        
-        
-     
 
     def get_absolute_url(self):
         """Get url for user's detail view.

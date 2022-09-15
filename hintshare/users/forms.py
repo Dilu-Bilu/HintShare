@@ -1,9 +1,10 @@
 from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
+from django import forms
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
-from django import forms
+
 User = get_user_model()
 
 
@@ -32,20 +33,27 @@ class UserSignupForm(SignupForm):
     Default fields will be added automatically.
     Check UserSocialSignupForm for accounts created from social.
     """
-    fields = ['bio', 'Image',]
+
+    fields = [
+        "bio",
+        "Image",
+    ]
 
     widgets = {
-    'Image' : forms.FileInput(attrs={'class': 'input-image-control'}),
+        "Image": forms.FileInput(attrs={"class": "input-image-control"}),
     }
+
     def clean_email(self):
-        data = self.cleaned_data['email']
-        if "@surreyschools.ca" not in data:   # any check you need
+        data = self.cleaned_data["email"]
+        if "@surreyschools.ca" not in data:  # any check you need
             raise forms.ValidationError("Must be a surreyschools account")
         return data
 
     class Meta:
         model = User
-        exclude = ('user',)
+        exclude = ("user",)
+
+
 class UserSocialSignupForm(SocialSignupForm):
     """
     Renders the form when user has signed up using social accounts.

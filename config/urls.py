@@ -6,8 +6,7 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-
-    path('', include('stackbase.urls'), name = 'stackbase'),
+    path("", include("stackbase.urls"), name="stackbase"),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
@@ -17,7 +16,7 @@ urlpatterns = [
     path("users/", include("hintshare.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    path("#", TemplateView.as_view(template_name="pages/about.html"), name ='profile')
+    path("#", TemplateView.as_view(template_name="pages/about.html"), name="profile"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

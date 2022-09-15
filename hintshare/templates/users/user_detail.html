@@ -108,17 +108,17 @@ p {
     <div class="container py-5">
         <div class ='col-md-6 offset-md-3 py-5 bg-white rounded border'>
             <h1 class = 'py-1 display-1 m-5 ' style="color: #4154F1;"> Profile</h1>
-            
+
             <div class="d-flex height-50 justify-content-center align-items-center flex-column py-4">
                 <img src="{{ object.Image.url }}" class="img-fluid roundedcol-lg-6 pd-3 img-thumbnail " alt="...">
                 <hr>
                 <h3 class="m-b-0">{{ object.name }}</h3>
-               
+
                 <p>{{ object.bio }}</p>
                 <p>{{ object.email }}</p>
                 <a href= "https://mail.google.com/mail/?view=cm&fs=1&to=someone@example.com&su=SUBJECT&body=BODY&bcc={{obejct.email}}" class="btn btn-primary" type="button">Contact</a>
                 <hr>
-                
+
             </div>
             <div class="row text-center m-t-20">
                 <div class="col-lg-4 col-md-4 m-t-20">
@@ -134,11 +134,11 @@ p {
             {% if object == request.user%}
             <div class="d-flex height-50 justify-content-center align-items-center flex-column py-4">
                 <a class="btn btn-primary btn-lg btn-block" style="width:30%;" href="{% url 'users:update' %}" role="button">My Info</a>
-                
+
             </div>
-            
-               
-             {%endif%}   
+
+
+             {%endif%}
 
             </div>
         </div>
@@ -153,13 +153,13 @@ p {
             <div class ='col-md-6 offset-md-3 py-5 bg-white rounded border'>
                 <h1 class = 'py-4 display-1 m-5 ' style="color: #4154F1;"> Input<span class="text-black" id='Titlefont'> Your Profile</h1>
                 <img src="{%static 'images/minion.jpeg'%}" class="img-fluid col-lg-6 offset-md-3" alt="...">
-            
+
                 <div class= 'container py-5 px-3'>
                     <div class="d-grid gap-2">
                         <a href="{% url 'users:update' %}"  class="btn btn-primary" type="button">Make Profile</a>
-                    
+
                     </div>
-                    
+
 
                 </div>
             </div>
@@ -172,13 +172,13 @@ p {
             <div class ='col-md-6 offset-md-3 py-5 bg-white rounded border'>
                 <h1 class = 'py-4 display-1 m-5 ' style="color: #4154F1;"> Profile<span class="text-black" id='Titlefont'> Under Construction</h1>
                 <img src="{%static 'images/construction.jpeg'%}" class="img-fluid col-lg-6 offset-md-3" alt="...">
-            
+
                 <div class= 'container py-5 px-3'>
                     <div class="d-grid gap-2">
                         <a href="{% url 'stackbase:question-lists' %}"  class="btn btn-primary" type="button">Back To Questions</a>
-                    
+
                     </div>
-                    
+
 
                 </div>
             </div>

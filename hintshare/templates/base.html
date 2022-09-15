@@ -19,12 +19,12 @@
        <!-- Latest compiled and minified Bootstrap CSS -->
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
        <!-- Your stuff: Third-party CSS libraries go here -->
-   
+
        <!-- This file stores project-specific CSS -->
        <link href="{% static 'css/project.css' %}" rel="stylesheet">
        <link href="{% static 'css/carousel.css'%}" rel="stylesheet">
-       
-  
+
+
     {% endblock %}
     <!-- Le javascript
     ================================================== -->
@@ -33,7 +33,7 @@
     <!-- Bootstrap JS -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Your stuff: Third-party javascript libraries go here -->
-    
+
     <!-- place project specific Javascript in this file -->
     <script defer src="{% static 'js/project.js' %}"></script>
 
@@ -43,15 +43,15 @@
   </head>
 
   <body class="pt-0 pb-0 mb-0">
-    
+
     <header class="pt-0 pb-0">
-      
+
         <nav class="navbar navbar-expand-md navbar-light pl-3 bg-light">
           <div class="container-fluid">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-   
+
             <a class="navbar-brand" href="{% url 'stackbase:home' %}"><h1 id='Titlefont'style='color:#4154F1; font-family: Helvetica;'>Hint<span class="text-black" id='Titlefont'>Share</h1></a>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -60,10 +60,10 @@
                   <a class="nav-link" href="{% url 'stackbase:home' %}"><h6>Home</h6> <span class="visually-hidden">(current)</span></a>
                 </li>
                 </li>
-        
-                
+
+
                 {% if request.user.is_authenticated and request.user.bio %}
-                
+
                 <li class="nav-item ">
                   <a class="nav-link" href="{% url 'stackbase:question-create' %}"><h6>Ask A Question</h6></a>
                 </li>
@@ -80,7 +80,7 @@
                     <a class="nav-link" href="{% url 'account_logout' %}"><h6>{% translate "Sign Out" %}</h6></a>
                   </li>
                 {% else %}
-                
+
                   {% if ACCOUNT_ALLOW_REGISTRATION %}
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
@@ -97,7 +97,7 @@
           </div>
         </nav>
 
-     
+
     </header>
     <div class="container">
 
@@ -110,13 +110,13 @@
         {% endfor %}
       {% endif %}
 
-      
+
 
     </div> <!-- /container -->
 
     {% block content %}
         <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %} 
+      {% endblock content %}
 
     {% block modal %}{% endblock modal %}
     <!-- Footer -->
@@ -144,7 +144,7 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        
+
         <!-- Grid column -->
 
         <!-- Grid column -->
@@ -193,7 +193,7 @@
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2022 Copyright: HintShare
-    
+
   </div>
   <!-- Copyright -->
 </footer>
@@ -210,4 +210,3 @@
     {% endblock inline_javascript %}
   </body>
 </html>
-
