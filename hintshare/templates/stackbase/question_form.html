@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main role="main" style ='background: linear-gradient(to bottom right, #000099 0%, #339966 114%);'>
+
+    {%if not prediction%}
+    <div class="container py-5" style ='background:linear-gradient(to bottom right, #000099 0%, #339966 114%)'>
+        <div class ='col-md-8 offset-md-2 pt-5 bg-white rounded border'>
+            <h1 class = 'py-4 display-1 text-success m-5 ' > Ask <span class="text-black" id='Titlefont'>Your Question</h1>
+
+            <hr class="">
+            <h4 class="p-2 m-3 py-4" style="color:#012970">Make sure to respect IB's Collusion Policies, and make sure not do anything that wil incriminate you.</h4>
+            <hr class="">
+            <div class= 'container p-5'>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form|crispy }}
+                    <button class="btn btn-success" id="logout-btn" type="submit">Post Question</button>
+                    <a style="text-decoration: none; " class="btn btn-outline-secondary" href="">Cancel</a>
+                  </form>
+                  
+                  {% endif%}
+           
+            
+            </div>
+        </div>
+        
+           
+           
+    </div>
+</main>
+   
+{% endblock content %}

@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=hintshare
+POSTGRES_USER=eEnQXOTgVapSutIcsMdJlhegKQOVAqLB
+POSTGRES_PASSWORD=oit5wdFxHaQISE4repHuEzFOoArLRkG8QjEkNwllFBHIlbamgFOZ7ZQanTsUymps

@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% load bootstrap_icons %}
+<link href="{% static 'css/style.css'%}" rel="stylesheet">
+<body>
+   
+  
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center">
+  
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <h1 data-aos="fade-up">A way to communicate with Seniors and get great advice</h1>
+            <h2 data-aos="fade-up" data-aos-delay="400">Our aim is to strengthen our unity as a school</h2>
+            <div data-aos="fade-up" data-aos-delay="600">
+              <div class="text-center text-lg-start">
+                <a href="{% url 'account_signup' %}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Sign Up</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{% static 'images/hero-img.png' %}" class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+  
+    </section><!-- End Hero -->
+  
+    <main id="main">
+   
+  
+      <!-- ======= Values Section ======= -->
+      <section id="values" class="values">
+  
+        <div class="container" data-aos="fade-up">
+  
+          <header class="section-header">
+            <h2>Our Values</h2>
+            <p>Be Responsible</p>
+          </header>
+  
+          <div class="row">
+  
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="box">
+                <img src="{% static 'images/values-1.png' %}" class="img-fluid" alt="">
+                <h3>Advice</h3>
+                <p>Seniors have the experience that juniors lack, and they can help them navigate the school with ease.</p>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+              <div class="box">
+                <img src="{% static 'images/values-2.png' %}" class="img-fluid" alt="">
+                <h3>Relationships</h3>
+                <p>Juniors can join the seniors' clubs and participate in activities that interest them.</p>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+              <div class="box">
+                <img src="{% static 'images/values-3.png' %}" class="img-fluid" alt="">
+                <h3>Responsibility</h3>
+                <p>Be responsile when posting questions and when responding to them. Do not do anything that you will regret later.</p>
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </section><!-- End Values Section -->
+  
+      <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              {% bs_icon 'emoji-smile' color='green' size='2.5em' %}
+              <i class="bi bi-emoji-smile"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="0" class="purecounter">{{users}}</span>
+                <p>Happy Clients</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              {% bs_icon 'question' color='red' size='3.5em' %}
+              <i class="bi bi-emoji-smile"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter">{{questions}}</span>
+                <p>Questions</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              {% bs_icon 'headset' color='green' size='2.5em' %}
+              <i class="bi bi-emoji-smile"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter">24</span>
+                <p>Hours Of Support</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              {% bs_icon 'people' color='purple' size='2.5em' %}
+              <i class="bi bi-people" style="color: #bb0852;"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter">1</span>
+                <p>Hard Workers</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+  
+      
+  
+  
+       
+  
+  
+  
+   
+  
+      <!-- ======= F.A.Q Section ======= -->
+      <section id="faq" class="faq">
+  
+        <div class="container" data-aos="fade-up">
+  
+          <header class="section-header">
+            <h2>F.A.Q</h2>
+            <p>Frequently Asked Questions</p>
+          </header>
+  
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- F.A.Q List 1-->
+              <div class="accordion accordion-flush" id="faqlist1">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                      Why should I as a senior respond to these questions?
+                    </button>
+                  </h2>
+                  <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                    <div class="accordion-body">
+                      As seniors it is our responsibility to pave the way and be role models for our juniors, and giving them advice is a way to do that. Plus, semiors can gain new memebers for their clubs by asking the juniors if they are interested.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                      What type of questions can I ask?
+                    </button>
+                  </h2>
+                  <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                    <div class="accordion-body">
+                     Frankly, you can ask anything, whether it be Mme. Loh's favourite type of chocolate or tips to succeed in Mr. Yeung's chemistry class; as long as the quesitons are in the seniors' ability to answer they are fine.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                      How do I know if someone responded to my question?
+                    </button>
+                  </h2>
+                  <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                    <div class="accordion-body">
+                      We are working on this but you should get an email.
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="col-lg-6">
+  
+              <!-- F.A.Q List 2-->
+              <div class="accordion accordion-flush" id="faqlist2">
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                      What can I not ask about?
+                    </button>
+                  </h2>
+                  <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                    <div class="accordion-body">
+                     You are not allowed to talk about specific questions on past tests and you are not allowed to discuss tests online, but strategies and tips are completely fine.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
+                      Who is the creator of StressBuddy?
+                    </button>
+                  </h2>
+                  <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                    <div class="accordion-body">
+                     Well if you must ask..... It is the not so legendary Dilreet Raju. Ask him about anything technology related and he will happily respond, but be wary of his terrible sense of humour.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
+                      Why is there no anonymity?
+                    </button>
+                  </h2>
+                  <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                    <div class="accordion-body">
+                      Advice is always better when their is a person behind, and with the knowledge of the identities of respondants, you can contact them IRL!
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </section><!-- End F.A.Q Section -->
+  
+     
+  
+    
+
+  
+     
+  
+      
+  
+    </main><!-- End #main -->
+  
+  
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+
+  
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
+    </script>
+  </body>
+
+{% endblock content %}

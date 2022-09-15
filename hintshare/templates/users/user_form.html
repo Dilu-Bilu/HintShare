@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+<main role="main" style="background: linear-gradient(to top, #012970 0%,  #454343 100%)">
+  <div class="container py-4">
+
+  </div>
+  <div class="container col-md-4 offset-md-4 rounded p-4 bg-light pt-4 ">
+    <h1 style="color:#012970">{{ user.username }}</h1>
+    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'users:update' %}">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container py-4">
+
+  </div>
+</main>
+{% endblock %}
