@@ -285,3 +285,4 @@ CKEDITOR_CONFIGS = {
         "width": "full",
     },
 }
+AWS_DEFAULT_ACL = None
