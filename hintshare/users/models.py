@@ -1,6 +1,6 @@
 from ast import BinOp
 from sched import scheduler
-
+from django.core.files.storage import default_storage as storage
 from django.contrib.auth.models import AbstractUser
 from django.db.models import CharField, ImageField, TextField
 from django.urls import reverse
@@ -40,7 +40,10 @@ class User(AbstractUser):
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
             img.thumbnail(output_size)
-            img.save(self.Image.path)
+            fh = storage.open(self.Image.path, "wb")
+            format = 'jpg'  # You need to set the correct image format here
+            img.save(fh, format)
+            fh.close()
 
     def get_absolute_url(self):
         """Get url for user's detail view.
