@@ -41,7 +41,7 @@ class User(AbstractUser):
             output_size = (300, 300)
             img.thumbnail(output_size)
             fh = storage.open(self.Image.name, "wb")
-            format = 'jpg'  # You need to set the correct image format here
+            format = 'jpeg'  # You need to set the correct image format here
             img.save(fh, format)
             fh.close()
 
