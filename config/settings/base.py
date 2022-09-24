@@ -71,6 +71,7 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
     "ckeditor",
+    'storages',
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
