@@ -22,14 +22,14 @@ class User(AbstractUser):
     first_name = None  # type: ignore
     last_name = None  # type: ignore
     bio = TextField(
-        _("Be sure to include You HLs and SLs"),
+        _("A quick description of who you are."),
         blank=True,
         max_length=255,
     )
     HL = CharField(_("Your HLs"), blank=True, max_length=255)
     SL = CharField(_("Your SLs"), blank=True, max_length=255)
     Role = CharField(
-        _("Role: Teacher, Student11, or Student12?"), blank=True, max_length=255
+        _("Role: teacher, student_11, or student_12?"), blank=True, max_length=255
     )
 
     Image = ImageField(default="default.jpg", upload_to="profile_pic")
