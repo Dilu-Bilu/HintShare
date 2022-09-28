@@ -66,10 +66,10 @@ class Comment(models.Model):
     # , reciever, sender, questionlink
     def send_simple_message():
         return requests.post(
-            "https://api.mailgun.net/v3/sandboxa267900cb92b403aa3bce3f63049b0ef.mailgun.org/messages",
-            auth=("api", "29e8acb297fd3c572f3cf635408942f6-07a637b8-e316f1c6"),
+            
+            auth=(),
             data={
-                "from": "mailgun@sandboxa267900cb92b403aa3bce3f63049b0ef.mailgun.org",
+                "from": "",
                 "to": ["dilreetraju@gmail.com"],
                 "subject": "HintShare comment",
                 "text": f"You have recieved a comment your post from {{sender}}. Here is a link to visit your question: {{questionlink}} ",
