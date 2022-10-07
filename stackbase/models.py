@@ -44,6 +44,12 @@ class Question(models.Model):
     def total_likes(self):
         return self.likes.count()
 
+    def total_comments(self):
+        return self.Comment.count()
+    def comment_number(self):
+        results = Comment.objects.filter(question=self).count()
+        print(results)
+        return results
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -51,6 +57,7 @@ class Comment(models.Model):
         Question, related_name="comment", on_delete=models.CASCADE
     )
     title = models.CharField(max_length=1000)
+    likes = models.ManyToManyField(User, related_name="comment_votes")
     content = RichTextField()
     date_created = models.DateTimeField(default=timezone.now)
 
@@ -59,19 +66,22 @@ class Comment(models.Model):
 
     def get_success_url(self):
         return reverse("stackbase:question-detail", kwargs={"pk": self.pk})
+        
+    def total_likes(self):
+        return self.likes.count()
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
     # , reciever, sender, questionlink
-    def send_simple_message():
-        return requests.post(
+    # def send_simple_message():
+    #     return requests.post(
             
-            auth=(),
-            data={
-                "from": "",
-                "to": ["dilreetraju@gmail.com"],
-                "subject": "HintShare comment",
-                "text": f"You have recieved a comment your post from {{sender}}. Here is a link to visit your question: {{questionlink}} ",
-            },
-        )
+    #         auth=(),
+    #         data={
+    #             "from": "",
+    #             "to": ["dilreetraju@gmail.com"],
+    #             "subject": "HintShare comment",
+    #             "text": f"You have recieved a comment your post from {{sender}}. Here is a link to visit your question: {{questionlink}} ",
+    #         },
+    #     )

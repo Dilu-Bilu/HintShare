@@ -18,6 +18,8 @@ from hintshare.users.models import User
 
 from .forms import CommentForm
 from .models import Comment, Question
+from django.core.mail import send_mail
+
 
 
 def home(request):
@@ -40,6 +42,7 @@ def about(request):
 # CRUD Function
 def like_view(request, pk):
     post = get_object_or_404(Question, id=request.POST.get("question_id"))
+   
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
@@ -50,6 +53,22 @@ def like_view(request, pk):
         liked = True
     return HttpResponseRedirect(reverse("stackbase:question-detail", args=[str(pk)]))
 
+# Like function for comments
+def comment_like_view(request, pk, id):
+
+    question = get_object_or_404(Question, id=pk)
+
+    post = question.comment.get(id=id)
+
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+        post.total_like = post.total_likes()
+    else:
+        post.likes.add(request.user)
+        liked = True
+    return HttpResponseRedirect(reverse("stackbase:question-detail", args=[str(pk)]))
 
 class QuestionListView(ListView):
     model = Question
@@ -80,6 +99,7 @@ class QuestionListView(ListView):
                 title__icontains=search_input
             )
             context["search_input"] = search_input
+        
         return context
 
 
@@ -97,6 +117,18 @@ class QuestionDetailView(DetailView):
 
         context["total_likes"] = total_likes
         context["liked"] = liked
+       
+        # comment = get_object_or_404(Comment, id=self.kwargs["pk"])
+        # print(comment.title)
+        # print(comment.total_likes())
+        # comment_total_likes = comment.total_likes()
+
+        # comment_liked = False
+        # if comment.likes.filter(id=self.request.user.id).exists():
+        #     comment_liked = True
+
+        # context["comment_total_likes"] = comment_total_likes
+        # context["comment_liked"] = comment_liked
         return context
 
 
@@ -145,7 +177,17 @@ class CommentDetailView(CreateView):
     def form_valid(self, form):
         form.instance.question_id = self.kwargs["pk"]
         return super().form_valid(form)
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data()
+        something = get_object_or_404(Comment, id=self.kwargs["pk"])
+        total_likes = something.total_likes()
 
+        liked = False
+        if something.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        context["total_likes"] = total_likes
+        context["liked"] = liked
     success_url = reverse_lazy("stackbase:question-detail")
 
 
@@ -158,12 +200,18 @@ class AddCommentView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.instance.question_id = self.kwargs["pk"]
+        question = get_object_or_404(Question, id=self.kwargs["pk"])
         # sender = form.instance.user.get_email_field_name
-        sender = "someone@gmail.com"
-        print(sender)
-        reciever = "dilreetraju@gmail.com"
-        questionlink = "http://127.0.0.1:8000/"
-        form.instance.send_simple_message()
+        sender = "dilreetraju@hintshare.ca"
+        reciever = str(question.user.email)
+        subject = "Hintshare Response"
+        message = f"You have recieved a response on your question. Follow this link to view your question and to respond to the comment: https://hintshare.herokuapp.com/questions/{form.instance.question_id}."
+        send_mail(subject, message, sender,
+          [reciever], html_message="<html>html body</html>")
+        # form.instance.send_simple_message()
+        # test all of the instance
+       
         return super().form_valid(form)
 
     success_url = reverse_lazy("stackbase:question-lists")
+

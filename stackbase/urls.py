@@ -32,4 +32,5 @@ urlpatterns = [
         name="question-comment",
     ),
     path("like/<int:pk>", views.like_view, name="like_post"),
+    path("like/<int:pk>/<int:id>", views.comment_like_view, name="like_comment"),
 ]
