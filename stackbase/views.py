@@ -19,7 +19,7 @@ from hintshare.users.models import User
 from .forms import CommentForm
 from .models import Comment, Question
 from django.core.mail import send_mail
-
+from hitcount.views import HitCountDetailView
 
 
 def home(request):
@@ -59,7 +59,7 @@ def comment_like_view(request, pk, id):
     question = get_object_or_404(Question, id=pk)
 
     post = question.comment.get(id=id)
-
+    print(pk, id)
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
@@ -105,11 +105,14 @@ class QuestionListView(ListView):
 
 class QuestionDetailView(DetailView):
     model = Question
-
+    count_hit = True
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data()
         something = get_object_or_404(Question, id=self.kwargs["pk"])
         total_likes = something.total_likes()
+        context.update({
+        'popular_posts': Question.objects.order_by('-hit_count_generic__hits')[:3],
+        })
 
         liked = False
         if something.likes.filter(id=self.request.user.id).exists():
@@ -207,7 +210,7 @@ class AddCommentView(CreateView):
         subject = "Hintshare Response"
         message = f"You have recieved a response on your question. Follow this link to view your question and to respond to the comment: https://hintshare.herokuapp.com/questions/{form.instance.question_id}."
         send_mail(subject, message, sender,
-          [reciever], html_message="<html>html body</html>")
+          [reciever], html_message=f"<html>{message}</html>")
         # form.instance.send_simple_message()
         # test all of the instance
        

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 
 from . import views
@@ -33,4 +33,5 @@ urlpatterns = [
     ),
     path("like/<int:pk>", views.like_view, name="like_post"),
     path("like/<int:pk>/<int:id>", views.comment_like_view, name="like_comment"),
+    path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
 ]

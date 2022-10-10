@@ -7,6 +7,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from hitcount.models import HitCountMixin, HitCount
+from django.contrib.contenttypes.fields import GenericRelation
 
 from hintshare.users.models import User
 
@@ -21,6 +23,8 @@ class Question(models.Model):
     likes = models.ManyToManyField(User, related_name="question_post")
     date_created = models.DateTimeField(default=timezone.now)
     total_like = models.IntegerField(null=True)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+    related_query_name='hit_count_generic_relation')
 
     class Tags(models.TextChoices):
         Math = "Ma", _("Math")

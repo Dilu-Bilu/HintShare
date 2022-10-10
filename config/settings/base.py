@@ -72,6 +72,7 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
     "ckeditor",
+    'hitcount',
 
 ]
 THIRD_PARTY_APPS = [
