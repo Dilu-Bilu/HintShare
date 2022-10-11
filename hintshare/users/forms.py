@@ -45,8 +45,8 @@ class UserSignupForm(SignupForm):
 
     def clean_email(self):
         data = self.cleaned_data["email"]
-        # if "@surreyschools.ca" not in data:  # any check you need
-        #     raise forms.ValidationError("Must be a surreyschools account")
+        if "@surreyschools.ca" not in data:  # any check you need
+            raise forms.ValidationError("Must be a surreyschools account")
         return data
 
     class Meta:
