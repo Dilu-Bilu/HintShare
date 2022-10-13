@@ -6,7 +6,7 @@
 
 {% block inner %}
     <h1>{% translate "Verify Your E-mail Address" %}</h1>
-
+    {% url 'account_email' as email_url %}
     <p>{% blocktranslate %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes. <a href="{{ email_url }}">issue a new e-mail confirmation request</a>{% endblocktranslate %}</p>
 
 {% endblock %}
