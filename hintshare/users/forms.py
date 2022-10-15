@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
-
+from allauth.account.utils import has_verified_email, send_email_confirmation
 User = get_user_model()
 
 
@@ -47,6 +47,9 @@ class UserSignupForm(SignupForm):
         data = self.cleaned_data["email"]
         if "@surreyschools.ca" not in data:  # any check you need
             raise forms.ValidationError("Must be a surreyschools account")
+        elif "@gmail.com" not in data:  # any check you need
+            raise forms.ValidationError("Must be a Gmail account")
+       
         return data
 
     class Meta:
