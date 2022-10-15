@@ -45,10 +45,13 @@ class UserSignupForm(SignupForm):
 
     def clean_email(self):
         data = self.cleaned_data["email"]
+
         if "@surreyschools.ca" not in data:  # any check you need
-            raise forms.ValidationError("Must be a surreyschools account")
-        elif "@gmail.com" not in data:  # any check you need
-            raise forms.ValidationError("Must be a Gmail account")
+            if "@gmail.com" in data:
+                return data
+            raise forms.ValidationError("Must be a surreyschools or gmail account")
+        # elif "@gmail.com" not in data:  # any check you need
+        #     raise forms.ValidationError("Must be a Gmail account")
        
         return data
 
