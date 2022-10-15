@@ -113,7 +113,7 @@ INSTALLED_APPS += ["anymail"]  # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 # https://anymail.readthedocs.io/en/stable/esps/amazon_ses/
-EMAIL_BACKEND = "anymail.backends.amazon_ses.EmailBackend"
+EMAIL_BACKEND = "anymail.backends.amazon_ses.smtp.EmailBackend"
 ANYMAIL = {
     "AMAZON_SES_CLIENT_PARAMS": {
         # example: override normal Boto credentials specifically for Anymail

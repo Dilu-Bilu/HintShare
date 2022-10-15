@@ -208,9 +208,9 @@ class AddCommentView(CreateView):
         sender = "dilreetraju@hintshare.ca"
         reciever = str(question.user.email)
         subject = "Hintshare Response"
-        message = f"You have recieved a response on your question. Follow this link to view your question and to respond to the comment: https://hintshare.ca/questions/{form.instance.question_id}"
+        message = f"You have recieved a response on your question. Follow this link to view your question and to respond to the comment:"
         send_mail(subject, message, sender,
-          [reciever], html_message=f"<html>{message}</html>")
+          [reciever], html_message=f"<html>{message} <a href = 'https://hintshare.ca/questions/{form.instance.question_id}'>See Question!</a></html>")
         # form.instance.send_simple_message()
         # test all of the instance
        
