@@ -2,9 +2,12 @@
 {% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block content %}
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    {% block inner %}{% endblock %}
+<div class="py-5" style="background-color:#151140;">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 bg-light">
+      {% block inner %}{% endblock %}
+    </div>
   </div>
 </div>
+
 {% endblock %}
