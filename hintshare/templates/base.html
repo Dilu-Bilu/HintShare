@@ -46,13 +46,13 @@
 
     <header class="pt-0 pb-0">
 
-        <nav class="navbar navbar-expand-md navbar-light pl-3 bg-light">
+        <nav class="navbar navbar-expand-md navbar-light pl-1 bg-light">
           <div class="container-fluid">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="navbar-brand" href="{% url 'stackbase:home' %}"><img src="{% static 'images/HintShareLogoFinal.svg'%}" alt=""></a>
+            <a class="navbar-brand" href="{% url 'stackbase:home' %}"><img style="height: 90px; width: 140px" src="{% static 'images/HintShareLogoFinal.svg'%}" alt=""></a>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
               <ul class="navbar-nav ">
@@ -60,17 +60,18 @@
                   <a class="nav-link" href="{% url 'stackbase:home' %}"><h6>Home</h6> <span class="visually-hidden">(current)</span></a>
                 </li>
                 </li>
-
-
-                {% if request.user.is_authenticated and request.user.bio %}
-
-                <li class="nav-item ">
-                  <a class="nav-link" href="{% url 'stackbase:question-create' %}"><h6>Ask A Question</h6></a>
-                </li>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'stackbase:question-lists' %}"><h6>View Questions</h6></a>
                 </li>
+
+                {% if request.user.is_authenticated %}
+                {% if request.user.bio %}
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'stackbase:question-create' %}"><h6>Ask A Question</h6></a>
+                </li>
+                {%endif%}
+                </li>
+                
                   <li class="nav-item">
                     {# URL provided by django-allauth/account/urls.py #}
                     <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><h6>{% translate "My Profile" %}</h6></a>

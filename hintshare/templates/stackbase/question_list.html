@@ -51,12 +51,17 @@
             <div class="container col-12 col-md-8 col-lg-6 border border-dark px-2 bg-white rounded">
                 <div class="row pt-2">
                     <div class=" mh-25 h-md-0 d-flex flex-row flex-sm-column col-sm-2 justify-content-between justify-content-sm-start">
-
+                        {% if user.bio%}
                         <a href="{% url 'users:detail' question.user  %}"><img src="{{ question.user.Image.url }}"
                             class="img-fluid mh-25 rounded-circle pd-3 img-thumbnail border border-primary"
-                            style="height: 75px; width: 75px;" alt="..."></a>                        
+                            style="height: 90px; width: 90px;" alt="..."></a>                        
                         <div class="mt-sm-3 m-1 pl-2 border border-success bg-success text-white text-center rounded">
-                            
+                        {%else%}
+                        <a href="{% url 'account_signup'  %}"><img src="{{ question.user.Image.url }}"
+                            class="img-fluid mh-25 rounded-circle pd-3 img-thumbnail border border-primary"
+                            style="height: 90px; width: 90px;" alt="..."></a>                        
+                        <div class="mt-sm-3 m-1 pl-2 border border-success bg-success text-white text-center rounded">
+                        {%endif%}
                                 
                                 
                            <div class="container px-2 pt-1">{% bs_icon 'hand-thumbs-up' color='white' size='1.5em' %}</div>
@@ -66,7 +71,11 @@
                     </div>
                     <div class="col-12 col-sm-10 pl-2">
                         <div class="d-flex">
+                            {% if user.bio%}
                             <div class="p-2"><a href="{% url 'users:detail' question.user  %}">{{question.user}}</a></div>
+                            {%else%}
+                            <div class="p-2"><a href="{% url 'account_signup' %}">{{question.user}}</a></div>
+                            {%endif%}
                             <div class="p-2"><div class='container rounded bg-warning text-white'>{{question.tags}}</div></div>
                          
                           
@@ -84,8 +93,8 @@
                                 <div class="d-flex justify-content-end" style="background-color: #F5F5F5;">
                                     <div class="p-2 my-3 mx-2 border bg-success text-white border-success">{% bs_icon 'chat-left-fill' color='white' size='1em' %} Comments: {{question.comment.all | length}}</div>
                              
-                                    <div class="p-2 my-3 mx-2 border border-dark">{% bs_icon 'eye-fill' color='black' size='1em' %} Views: {% get_hit_count for question %}</div>
-                                  
+                                    <div class="p-2 my-3 mx-2 border border-dark">{% bs_icon 'eye-fill' color='black' size='1em' %} Views:?</div>
+                                    <!-- {% get_hit_count for question %} -->
                                     <div class="ml-auto p-2 my-2"> <a href="{% url 'stackbase:question-detail' question.id%}" class="btn btn-primary btn-dark">Answer</a></div>
                                   </div>
                                 <div class="container py-2">

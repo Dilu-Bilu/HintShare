@@ -36,11 +36,15 @@
                     <div class="row pt-2">
                         <div
                             class=" mh-25 h-md-0 d-flex flex-row flex-sm-column col-sm-2 justify-content-between justify-content-sm-start">
-
+                        {% if user.bio%}
                             <a href="{% url 'users:detail' question.user  %}"><img src="{{ question.user.Image.url }}"
                                 class="img-fluid mh-25 rounded-circle pd-3 img-thumbnail border border-primary"
                                 style="height: 75px; width: 75px;" alt="..."></a>
-
+                        {% else %}
+                            <a href="{% url 'users:detail' question.user  %}"><img src="{{ question.user.Image.url }}"
+                                class="img-fluid mh-25 rounded-circle pd-3 img-thumbnail border border-primary"
+                                style="height: 75px; width: 75px;" alt="..."></a>
+                        {% endif %}
                             <form class='pt-3' action="{% url 'stackbase:like_post' object.pk %}" method="POST">
                                 {% csrf_token %}
                                 {% if user.is_authenticated %}
@@ -70,7 +74,7 @@
                                 {% endif %}
                                 {% else %}
                                 <h5 style="margin-left: 10px; cursor: pointer;"><a href="#">Login</a> to Like Question | {{ total_likes }} Likes</h5>
-                                <h3 class='m-5' id="fh3">{{question.title}}</h3>
+                                
                                 {% endif %}
 
                             </form>
@@ -79,8 +83,13 @@
                         </div>
                         <div class="col-12 col-sm-10 pl-2" style="height:400px;">
                             <div class="d-flex">
+                                {% if user.is_authenticated %}
                                 <div class="p-2"><a href="{% url 'users:detail' question.user  %}">{{question.user}}</a>
                                 </div>
+                                {%else%}
+                                <div class="p-2"><a href="{% url 'account_signup'  %}">{{question.user}}</a>
+                                </div>
+                                {%endif%}
                                 <div class="p-2">
                                     <div class='container rounded bg-success text-white'>{{question.tags}}</div>
                                 </div>
@@ -101,9 +110,15 @@
                         </div>
                     </div>
                     <hr>
+                    {% if user.bio %}
                     <a href="{% url 'stackbase:question-comment' question.id %}">
                         <div class="container btn btn-primary">Answer Question </div>
                     </a>
+                    {%else%}
+                    <a href="{% url 'account_signup' %}">
+                        <div class="container btn btn-primary">Sign Up and Make Bio To Answer Question </div>
+                    </a>
+                    {%endif%}
                     <hr>
                     <div class="container m-2">
 
@@ -133,10 +148,15 @@
                     <div class="row  ">
                         <div
                             class=" mh-25 h-md-0 d-flex flex-row flex-sm-column col-sm-2 justify-content-between justify-content-sm-start">
-
+                        {% if user.bio %}
                             <a href="{% url 'users:detail' comment.user  %}"><img src="{{ comment.user.Image.url }}"
                                 class="img-fluid mh-25 rounded-circle pd-3 img-thumbnail border border-primary"
                                 style="height: 75px; width: 75px;" alt="..."></a>
+                            {%else%}
+                            <a href="{% url 'account_signup' %}"><img src="{{ comment.user.Image.url }}"
+                                class="img-fluid mh-25 rounded-circle pd-3 img-thumbnail border border-primary"
+                                style="height: 75px; width: 75px;" alt="..."></a>
+                            {%endif%}
                                 <form action="{% url 'stackbase:like_comment' object.pk comment.id %}" method="POST">
                                     {% csrf_token %}
                                     {% if user.is_authenticated %}
@@ -153,16 +173,23 @@
                                                 <button type="submit" name="comment_id" value="{{ comment.id }}" style="border: none; border-radius: 30px;"><img src="https://i.pinimg.com/originals/39/44/6c/39446caa52f53369b92bc97253d2b2f1.png" alt="" style="width: 40px;"></button> <h5 style="margin-left: 10px; cursor: pointer;"> |  {{comment.likes.all| length }}  Likes</h5>
                                             </div>
                                         {% else %}
-                                            <h5 style="margin-left: 10px; cursor: pointer;"><a href="#">Login</a> to Like Question |  {{ total_likes }} Likes</h5>
+                                            <h5 style="margin-left: 10px; cursor: pointer;"><a href="{% url 'account_signup' %}">Login</a> to Like Comment |  {{ total_likes }} Likes</h5>
                                     
                                      {% endif %}
                                 </form>
 
                         </div>
+                        {% if user.bio %}
                         <div class="col-12 col-sm-10 pl-2" style="height:400px;">
                             <div class="d-flex">
                                 <div class="p-2">Answered by: <a href="{% url 'users:detail' comment.user  %}">{{comment.user}}</a>
                                 </div>
+                            {%else%}
+                            <div class="col-12 col-sm-10 pl-2" style="height:400px;">
+                                <div class="d-flex">
+                                    <div class="p-2">Answered by: <a href="{% url 'account_signup' %}">{{comment.user}}</a>
+                                    </div>
+                                {% endif %}
                                
 
 
