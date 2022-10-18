@@ -9,14 +9,17 @@
     <h1 class="pt-5">{% translate "Verify Your E-mail Address" %}</h1>
     {% url 'account_email' as email_url %}
     <p class="py-3">{% blocktranslate %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes. <a href="{{ email_url }}">Resend Verfication</a> {% endblocktranslate %}</p>
-    <h5 class = 'pt-5'>{% blocktranslate%} If you have not recieved an email, then follow these instructions.{% endblocktranslate%}</h5>
+    <h5 class = 'pt-5 text-danger'>{% blocktranslate%} If you have not recieved an email, then follow these instructions.{% endblocktranslate%}</h5>
     <ul class="pb-5">
         <li>Open <a href="https://www.Outlook.com" target="_blank">Outlook.com</a> or your email service provider</li>
         <li>Open Settings</li>
         <li>Search "Safe Senders"</li>
         <li>Add dilreetraju@hintshare.ca to list</li>
         <li>Resend verfication using the link above</li>
+      
     </ul>
+    <h5 class="text-danger">If this does not work, then email dilreetraju@gmail.com for a manual confirmation</h5>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dilreetraju@gmail.com&su=Email Confirmation&body=My email confirmation is not working could you please check my email and confirm it manually? My surrey schools email is (Insert email)"><button class="btn btn-primary">Email Us</button></a>
 </div>
 
 {% endblock %}
