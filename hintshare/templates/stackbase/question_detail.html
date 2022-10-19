@@ -147,7 +147,7 @@
            
                     <div class="row  ">
                         <div
-                            class=" mh-25 h-md-0 d-flex flex-row flex-sm-column col-sm-2 justify-content-between justify-content-sm-start">
+                            class="  h-md-0 d-flex flex-row flex-sm-column col-sm-2 justify-content-between justify-content-sm-start">
                         {% if user.bio %}
                             <a href="{% url 'users:detail' comment.user  %}"><img src="{{ comment.user.Image.url }}"
                                 class="img-fluid mh-25 rounded-circle pd-3 img-thumbnail border border-primary"
@@ -180,7 +180,7 @@
 
                         </div>
                         {% if user.bio %}
-                        <div class="col-12 col-sm-10 pl-2" style="height:400px;">
+                        <div class="col-12 col-sm-10 pl-2">
                             <div class="d-flex">
                                 <div class="p-2">Answered by: <a href="{% url 'users:detail' comment.user  %}">{{comment.user}}</a>
                                 </div>
