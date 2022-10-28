@@ -2,7 +2,7 @@ from ast import BinOp
 from sched import scheduler
 from django.core.files.storage import default_storage as storage
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField, ImageField, TextField
+from django.db.models import CharField, ImageField, TextField, EmailField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from PIL import Image
@@ -19,6 +19,7 @@ class User(AbstractUser):
 
     #: First and last name do not cover name patterns around the globe
     name = CharField(_("Name of User"), blank=True, max_length=255)
+    secondary_email = EmailField(null=True, blank=True)
     first_name = None  # type: ignore
     last_name = None  # type: ignore
     bio = TextField(

@@ -19,23 +19,26 @@
 <style>
     a { text-decoration: none; }
   </style>
-<body style='background: linear-gradient(to bottom, #100000 6%, #000099 96%)'>
-    <div class="container  col-md-6">
+<body style='background: linear-gradient(to bottom, #F2F5FC 6%, #000099 96%)'>
+    <div class="container col-12 col-md-8 col-lg-6">
         <div id="sub-nav">
-            <div class="flex offset-md-3 col-md-3">
-                <h1 class='display-1 justify-content-center text-light pl-3' id="fh1">Search Questions</h1>
+            <div class="flex">
+                <h1 class='display-1 text-center pt-5 text-black ' id="fh1">Search Questions</h1>
 
 
             </div>
         </div>
-        <div class="container py-4 pl-2">
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <form action="" method="GET">
-                    <input type="text" style="width: 75%; height: 40px" id="" name="search-area"
-                        placeholder="Search...">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </form>
+
+        <div class="container py-4 d-flex justify-content-center">
+            <div class="search-container ">
+            
+                
+                        <form action="" method="GET">
+                            <input type="text" class="py-2 pe-5 w-95"id="" name="search-area"
+                                placeholder="Search...">
+                            <button class="btn btn-primary py-2 px-4 m-1" type="submit">{% bs_icon 'search' color='white' size='1em' %}</button>
+                        </form>
+                
             </div>
 
         </div>
@@ -81,7 +84,7 @@
                           
                             <div class="p-2"><h6>On: <a href="{% url 'stackbase:question-detail' question.id%}">{{question.date_created|date:"j F, Y"}}</a></h6></div>
                           </div>
-                        <h3 id="fh3">{{ question.title }}</h3>
+                        <a href="{% url 'stackbase:question-detail' question.id%}" class="text-black"><h3 id="fh3">{{ question.title }}</h3></a>
                         <hr>
                         {% if question.content|wordcount < 10 %} <h6 id="fh6" style="text-align: left;  color: rgba(54, 54, 54, 0.852);">
                             {{question.content|safe}}</h6>

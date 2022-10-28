@@ -4,7 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
-
+from django.forms import ValidationError
 User = get_user_model()
 
 
@@ -29,9 +29,25 @@ user_detail_view = UserDetailView.as_view()
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     model = User
-    fields = ["name", "bio", "Image", "HL", "SL", "Role"]
+    fields = ["secondary_email","name", "bio", "Image", "HL", "SL", "Role"]
     success_message = _("Information successfully updated")
 
+    def clean(self):
+        data = self.cleaned_data["secondary_email"]
+        if "@gmail.com" in data:
+            print('gmail')
+            return data
+    
+        elif "@yahoo.com" in data:
+            print('yhoo')
+            return data
+        elif "@hotmail.com" in data:  # any check you need
+           print('hot')
+           return data
+        else:
+            print("nothing")
+            raise ValidationError("Must be a surreyschools or gmail account")
+        return data
     def get_success_url(self):
         assert (
             self.request.user.is_authenticated
