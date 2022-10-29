@@ -50,7 +50,7 @@ class UserSignupForm(SignupForm):
         if "@surreyschools.ca" not in data:  # any check you need
             # if "@gmail.com" in data:
             #     return data
-            raise forms.ValidationError("Must be a surreyschools or gmail account")
+            raise forms.ValidationError("Must be a surreyschools account")
         # elif "@gmail.com" not in data:  # any check you need
         #     raise forms.ValidationError("Must be a Gmail account")
        
