@@ -4,6 +4,16 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps.views import sitemap
+from django.urls import path
+from stackbase.models import Question
+
+info_dict = {
+    'queryset': Question.objects.all(),
+    'date_field': 'pub_date',
+}
+
 
 urlpatterns = [
     path("", include("stackbase.urls"), name="stackbase"),
@@ -17,6 +27,10 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
     path("#", TemplateView.as_view(template_name="pages/about.html"), name="profile"),
+    path('sitemap.xml', sitemap,
+        {'sitemaps': {'questions': GenericSitemap(info_dict, priority=0.6)}},
+        name='django.contrib.sitemaps.views.sitemap'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
