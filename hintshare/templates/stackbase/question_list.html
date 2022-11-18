@@ -94,9 +94,9 @@
                             {% endif %}
                            
                                 <div class="d-flex justify-content-end" style="background-color: #F5F5F5;">
-                                    <div class="p-2 my-3 mx-2 border bg-success text-white border-success">{% bs_icon 'chat-left-fill' color='white' size='1em' %} Comments: {{question.comment.all | length}}</div>
+                                    <a href="{% url 'stackbase:question-detail' question.id%}" class="btn btn-primary btn-light"><div class="p-2 my-2 mx-2 border bg-success text-white border-success">{% bs_icon 'chat-left-fill' color='white' size='1em' %} Comments: {{question.comment.all | length}}</div></a>
                              
-                                    <div class="p-2 my-3 mx-2 border border-dark">{% bs_icon 'eye-fill' color='black' size='1em' %} Views:?</div>
+                                    
                                     <!-- {% get_hit_count for question %} -->
                                     <div class="ml-auto p-2 my-2"> <a href="{% url 'stackbase:question-detail' question.id%}" class="btn btn-primary btn-dark">Answer</a></div>
                                   </div>
