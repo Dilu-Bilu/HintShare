@@ -1,4 +1,10 @@
 User-Agent: *
 Disallow:
 
+User-Agent: Googlebot
+
+Disallow: /directory/
+
+
+
 Sitemap: https://hintshare.ca/sitemap.xml
