@@ -1,3 +1,4 @@
 User-Agent: *
-Disallow: /private/
-Disallow: /junk/
+Disallow:
+
+Sitemap: https://hintshare.ca/sitemap.xml

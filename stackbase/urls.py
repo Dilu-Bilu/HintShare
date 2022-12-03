@@ -43,4 +43,5 @@ urlpatterns = [
     path("like/<int:pk>/<int:id>", views.comment_like_view, name="like_comment"),
     path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path("robots.txt",TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]
