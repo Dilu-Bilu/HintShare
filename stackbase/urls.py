@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 from hintshare.sitemaps import StaticViewSitemap, ArticleSitemap
 from . import views
+from django.http import HttpResponse
 
 app_name = "stackbase"
 
@@ -44,4 +45,5 @@ urlpatterns = [
     path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path("robots.txt",TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    (r'^robots.txt', lambda r: HttpResponse("User-agent: *\nDisallow: /*", mimetype="text/plain")),
 ]
