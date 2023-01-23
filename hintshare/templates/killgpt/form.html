@@ -1,0 +1,128 @@
+<!-- {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+
+<main class="main">
+<link href="{% static 'css/AIform.css'%}" rel="stylesheet">
+<div class="bg text-center pt-5">
+
+    <!--Div for Centered Text & Input--> 
+    <!-- <div class="centered">
+    <h1 class=""> ANALYZE ME</h1>
+       <p class="firstLine"> E &nbsp; M &nbsp; A &nbsp; I &nbsp; L &nbsp; . &nbsp; M &nbsp; E </p>
+     
+      <p class="secondLine">The Simplest Email Client Ever</p>
+  
+      <p> <input class="InputStyle" placeholder="Email me when it's ready        
+                            &#xf0e0; " style="font-family:Arial, FontAwesome" type="text"> </p>
+                            <form action="" method="POST" class = 'input-lg'enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.media }}
+                                {{ form|crispy }}
+                                <button class="btn btn-success" id="logout-btn" type="submit">Analyze Text</button>
+                                <a style="text-decoration: none; " class="btn btn-outline-secondary" href="">Cancel</a>
+                              </form>
+                              {{output}}
+                            {{score}}
+                            {{decision}}
+  
+      </div>
+  
+      <!--Div for bottom Icons-->
+  <!-- <div class="social-btn">
+              <a href="#"  title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#"  title="Twitter"><i class="fa fa-twitter"></i></a>
+          
+  </div>
+     
+    </div>
+  
+</main> --> 
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'css/AIform.css' %}">
+  <script src="https://kit.fontawesome.com/yourcode.js"></script>
+</head>
+<body>
+
+<!--Div for Background-->
+<div class="bg text-center">
+
+  <!--Div for Centered Text & Input--> 
+  <div class="centered">
+    <form action="" method="POST" class = 'input-lg'enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <button class="btn btn-success" id="logout-btn" type="submit">Analyze Text</button>
+<p class="firstLine"> E   M   A   I   L   .   M   E </p>
+<p class="secondLine">The Simplest Email Client Ever</p>
+<p> <input class="InputStyle" placeholder="Email me when it's ready        
+          &#xf0e0; " style="font-family:Arial, FontAwesome" type="text" name="email"> </p>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+<!--Div for bottom Icons-->
+<div class="social-btn">
+			<a href="#"  title="Facebook"><i class="fa fa-facebook"></i></a>
+			<a href="#"  title="Twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+
+</body>
+</html>
+```
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static 'css/AIform.css' %}">
+  <script src="https://kit.fontawesome.com/yourcode.js"></script>
+</head>
+<body>
+
+Div for Background
+<div class="bg text-center">
+    <img src="{% static 'images/AI.png' %}" class="img-fluid" alt="">
+
+
+ <!--Div for Centered Text & Input--> 
+ <!-- <div class="centered" style="padding-top: 300px;">
+   
+    <p class="firstLine"> Test It Out!</p>
+    <p class="secondLine">The Simplest and Cleanest GPT Detector</p>
+    <form action="" method="POST" label ="Input your text here." class = 'input-lg'enctype="multipart/form-data" style="background: #282D64; border: white;">
+        
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <button class="btn " id="logout-btn" type="submit" style="background: white; border: w#4E527F;">Analyze Text</button>
+    </form>
+    
+    
+    </div> -->
+
+<!-- </body>
+</html> -->
+<!-- {%endblock content%} --> -->

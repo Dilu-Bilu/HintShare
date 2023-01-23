@@ -9,6 +9,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 from stackbase.models import Question
 from django.http import HttpResponse
+from killgpt.views import TextInputView
 info_dict = {
     'queryset': Question.objects.all(),
     'date_field': 'pub_date',
@@ -17,6 +18,7 @@ info_dict = {
 
 urlpatterns = [
     path("", include("stackbase.urls"), name="stackbase"),
+    path("AI/", TextInputView, name='AI'),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
