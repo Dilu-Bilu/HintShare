@@ -10,8 +10,9 @@ from .forms import TextInputForm
 
 class AbstractLanguageChecker():
     def __init__(self):
-        self.device = torch.device(
-            "cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cpu")
+        # self.device = torch.device(
+        #     "cuda" if torch.cuda.is_available() else "cpu")
 
     def check_probabilities(self, in_text, topk=40):
         raise NotImplementedError
@@ -25,7 +26,8 @@ class LM(AbstractLanguageChecker):
         super(LM, self).__init__()
         self.enc = GPT2Tokenizer.from_pretrained(model_name_or_path)
         self.model = GPT2LMHeadModel.from_pretrained(model_name_or_path)
-        self.model.to(self.device)
+        self.model = self.model.to(self.device)
+        # self.model.to(self.device)
         self.model.eval()
         self.start_token = '<|endoftext|>'
         print("Loaded GPT-2 model!")
@@ -40,9 +42,12 @@ class LM(AbstractLanguageChecker):
         context = torch.tensor(context,
                                device=self.device,
                                dtype=torch.long).unsqueeze(0)
+        context = context.to(self.device)
         context = torch.cat([start_t, context], dim=1)
         # Forward through the model
-        logits, _ = self.model(context)
+        with torch.no_grad():
+            logits, _ = self.model(context)
+
 
         # construct target and pred
         yhat = torch.softmax(logits[0, :-1], dim=-1)
@@ -132,7 +137,7 @@ def main_code(raw_text):
 
 def limit_string_size(string):
     word_list = string.split(" ")
-    limited_string = " ".join(word_list[:500])
+    limited_string = " ".join(word_list[:600])
     return limited_string
 
 
@@ -146,6 +151,7 @@ def TextInputView(request):
             input_text = limit_string_size(text)
             input_text = unicodedata.normalize("NFKD", input_text).encode("ascii", "ignore").decode("utf-8")
             output_list = main_code(input_text)
+            print(output_list)
             score = humanity_score(output_list)
             if score > 7: 
                 decision = "This seems to be human text."
