@@ -10,9 +10,9 @@ from .forms import TextInputForm
 
 class AbstractLanguageChecker():
     def __init__(self):
-        self.device = torch.device("cpu")
-        # self.device = torch.device(
-        #     "cuda" if torch.cuda.is_available() else "cpu")
+        # self.device = torch.device("cpu")
+        self.device = torch.device(
+            "cuda" if torch.cuda.is_available() else "cpu")
 
     def check_probabilities(self, in_text, topk=40):
         raise NotImplementedError
@@ -138,6 +138,7 @@ def main_code(raw_text):
 def limit_string_size(string):
     word_list = string.split(" ")
     limited_string = " ".join(word_list[:600])
+    print(limited_string)
     return limited_string
 
 
